@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PersonaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CatEstadoCivil">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strValor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persona" Relationship="Self.fk_Estadocivil" FromRole="CatEstadoCivil" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="CatSexo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strValor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Persona" Relationship="Self.fk_Catsexo" FromRole="CatSexo" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="CatStatusUsuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strValor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strDescripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.fk_estadouser" FromRole="CatStatusUsuario" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="strCalle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strNumero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strColonia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Persona" Relationship="Self.fk_DicPersona" FromRole="Direccion" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strClaveUnica" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strNombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strAPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strAMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idCatSexo" Type="Int32" Nullable="false" />
+    <Property Name="strFechaN" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="strNHermanos" Type="Int32" />
+    <Property Name="strCorreo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="strRfc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="strCPostal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idCatEstadocivil" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CatEstadoCivil" Relationship="Self.fk_Estadocivil" FromRole="Persona" ToRole="CatEstadoCivil" />
+    <NavigationProperty Name="CatSexo" Relationship="Self.fk_Catsexo" FromRole="Persona" ToRole="CatSexo" />
+    <NavigationProperty Name="Direccion" Relationship="Self.fk_DicPersona" FromRole="Persona" ToRole="Direccion" />
+    <NavigationProperty Name="Usuario" Relationship="Self.fk_PerosnaUser" FromRole="Persona" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="strNombrePersona" Type="Int32" Nullable="false" />
+    <Property Name="strUsuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="strPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CatValorUsuario" Type="Int32" Nullable="false" />
+    <Property Name="dteFechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="strTokenRecorver" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CatStatusUsuario" Relationship="Self.fk_estadouser" FromRole="Usuario" ToRole="CatStatusUsuario" />
+    <NavigationProperty Name="Persona" Relationship="Self.fk_PerosnaUser" FromRole="Usuario" ToRole="Persona" />
+  </EntityType>
+  <Association Name="fk_Estadocivil">
+    <End Role="CatEstadoCivil" Type="Self.CatEstadoCivil" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatEstadoCivil">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="idCatEstadocivil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Catsexo">
+    <End Role="CatSexo" Type="Self.CatSexo" Multiplicity="1" />
+    <End Role="Persona" Type="Self.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatSexo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="idCatSexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_estadouser">
+    <End Role="CatStatusUsuario" Type="Self.CatStatusUsuario" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CatStatusUsuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="CatValorUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_DicPersona">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PerosnaUser">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="strNombrePersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PersonaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CatEstadoCivil" EntityType="Self.CatEstadoCivil" />
+    <EntitySet Name="CatSexo" EntityType="Self.CatSexo" />
+    <EntitySet Name="CatStatusUsuario" EntityType="Self.CatStatusUsuario" />
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="fk_Estadocivil" Association="Self.fk_Estadocivil">
+      <End Role="CatEstadoCivil" EntitySet="CatEstadoCivil" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Catsexo" Association="Self.fk_Catsexo">
+      <End Role="CatSexo" EntitySet="CatSexo" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="fk_estadouser" Association="Self.fk_estadouser">
+      <End Role="CatStatusUsuario" EntitySet="CatStatusUsuario" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="fk_DicPersona" Association="Self.fk_DicPersona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PerosnaUser" Association="Self.fk_PerosnaUser">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

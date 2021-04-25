@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PersonaModelStoreContainer" CdmEntityContainer="PersonaEntities">
+    <EntitySetMapping Name="CatEstadoCivil">
+      <EntityTypeMapping TypeName="PersonaModel.CatEstadoCivil">
+        <MappingFragment StoreEntitySet="CatEstadoCivil">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="strValor" ColumnName="strValor" />
+          <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatSexo">
+      <EntityTypeMapping TypeName="PersonaModel.CatSexo">
+        <MappingFragment StoreEntitySet="CatSexo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="strValor" ColumnName="strValor" />
+          <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CatStatusUsuario">
+      <EntityTypeMapping TypeName="PersonaModel.CatStatusUsuario">
+        <MappingFragment StoreEntitySet="CatStatusUsuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="strValor" ColumnName="strValor" />
+          <ScalarProperty Name="strDescripcion" ColumnName="strDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Direccion">
+      <EntityTypeMapping TypeName="PersonaModel.Direccion">
+        <MappingFragment StoreEntitySet="Direccion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="strCalle" ColumnName="strCalle" />
+          <ScalarProperty Name="strNumero" ColumnName="strNumero" />
+          <ScalarProperty Name="strColonia" ColumnName="strColonia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="PersonaModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="strClaveUnica" ColumnName="strClaveUnica" />
+          <ScalarProperty Name="strNombre" ColumnName="strNombre" />
+          <ScalarProperty Name="strAPaterno" ColumnName="strAPaterno" />
+          <ScalarProperty Name="strAMaterno" ColumnName="strAMaterno" />
+          <ScalarProperty Name="idCatSexo" ColumnName="idCatSexo" />
+          <ScalarProperty Name="strFechaN" ColumnName="strFechaN" />
+          <ScalarProperty Name="strNHermanos" ColumnName="strNHermanos" />
+          <ScalarProperty Name="strCorreo" ColumnName="strCorreo" />
+          <ScalarProperty Name="strRfc" ColumnName="strRfc" />
+          <ScalarProperty Name="strCPostal" ColumnName="strCPostal" />
+          <ScalarProperty Name="idCatEstadocivil" ColumnName="idCatEstadocivil" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PersonaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="PersonaModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="strNombrePersona" ColumnName="strNombrePersona" />
+          <ScalarProperty Name="strUsuario" ColumnName="strUsuario" />
+          <ScalarProperty Name="strPassword" ColumnName="strPassword" />
+          <ScalarProperty Name="CatValorUsuario" ColumnName="CatValorUsuario" />
+          <ScalarProperty Name="dteFechaRegistro" ColumnName="dteFechaRegistro" />
+          <ScalarProperty Name="strTokenRecorver" ColumnName="strTokenRecorver" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
